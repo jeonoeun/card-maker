@@ -1,0 +1,77 @@
+.card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 1em;
+  background-color: beige;
+  margin-bottom: 1em;
+  padding: 0.2em 0;
+  /* box-shadow: 6px 6px 8px 0px rgba(217, 217, 217, 1); */
+  max-width: 30rem;
+}
+
+.card.dark {
+  background-color: #222;
+  color: white;
+}
+
+.card.light {
+  background-color: rgb(244, 244, 231);
+  color: black;
+}
+
+.card.colorful {
+  background: linear-gradient(
+    166deg,
+    rgba(237, 193, 211, 1) 0%,
+    rgba(212, 149, 161, 1) 60%,
+    rgba(162, 63, 63, 1) 100%,
+    rgba(127, 188, 242, 1) 100%
+  );
+}
+
+.avatar {
+  width: 10em;
+  height: 10em;
+  padding: 1em;
+  margin-left: 0.5em;
+  margin-right: 1em;
+  border-radius: 50%;
+}
+
+.info {
+  width: 100%;
+}
+
+.name,
+.job,
+.email,
+.country,
+.message {
+  margin: 0;
+  font-size: 0.8rem;
+  margin-bottom: 0.2em;
+}
+
+.message {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.name {
+  font-size: 1.2rem;
+}
+
+.job {
+  margin-bottom: 1em;
+}
+
+.job::after {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 2px;
+  background-color: wheat;
+  transform: translateY(0.5em);
+}
