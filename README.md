@@ -4,7 +4,7 @@
 ## 프로젝트 개요
 - **작업 기간**: 2023.01
 - **진행 방식**: 개인 프로젝트 (기여도 100%)
-- **배포 링크**: [https://jeongeun.vercel.app](https://rococo-lamington-8b84b3.netlify.app)
+- **배포 링크**: https://rococo-lamington-8b84b3.netlify.app
 
 ## 기술 스택
 - **Backend / Auth**: Firebase
