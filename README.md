@@ -1,27 +1,26 @@
-# Card Maker [![Card Maker](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://rococo-lamington-8b84b3.netlify.app/)
+# Card Maker
+최근 인상 깊게 본 *영화 ‘Everything Everywhere All at Once’*에서 영감을 받아 제작한 프로젝트입니다. ‘멀티버스(다중 우주)’라는 설정을 바탕으로, **다른 우주 속 또 다른 나의 모습을 카드 형식으로 만들어보는 카드 메이커 프로젝트입니다.**
 
-> A curated list of gentle-monster READMEs
+## 프로젝트 개요
+- **작업 기간**: 2023.01
+- **진행 방식**: 개인 프로젝트 (기여도 100%)
+- **배포 링크**: [https://jeongeun.vercel.app](https://rococo-lamington-8b84b3.netlify.app)
 
-<br>
+## 기술 스택
+- **Backend / Auth**: Firebase
+- **Frontend**: React
+- **Image Upload / Storage**: Cloudinary
+- **Styling**: CSS Modules
+- **Deployment**: Netlify
 
-## 👀 프로젝트 소개
+## 주요 기능
 
-최근 재밌게 보았던 영화 ‘everything everywhere all at once’ 를
-테마로 만든 프로젝트입니다. ‘멀티버스’,
-즉 다중 우주 세계관이 핵심인 이 영화는 순간 순간의 선택으로 다른 삶을 살아가고 있는 주인공 ‘에블린’의 수많은 모습들이 존재합니다.
-영화를 보고 다중 우주 속 저의 모습들을 카드 형식으로 만들어 보고 싶어 만들어 본 Metaverse Card Maker 프로젝트입니다. (포트폴리오용으로 제작되었습니다.)
-
-🔗 [배포 링크](https://rococo-lamington-8b84b3.netlify.app/)
-
-<br>
-
-## 📍 주요 기능
-
-#### 1. 로그인
+### 1. 로그인
 
 <img src="./public/images/github01.png" alt=" " />
 
-- firebase를 사용해 로그인 기능을 구현하였습니다.
+- `firebase`를 활용해 로그인 기능을 구현했습니다. 사용자가 로그인 버튼을 클릭하면 선택한 `provider`(예: Google)로 인증이 진행되며, `signInWithPopup()`을 통해 인증 결과를 받아 사용자 정보를 획득합니다.
+
   ```jsx
   login(providerName) {
     const authProvider = this.getProvider(providerName);
@@ -29,22 +28,19 @@
   }
   ```
 
-<br>
-
-#### 2. 카드 실시간 편집, 미리보기
+### 2. 카드 실시간 편집 및 미리보기
 
 <img src="./public/images/github02.png" alt=" " />
 
-- firebase 실시간 데이터베이스에서 **userId**에 카드의 정보를 저장하여 관리하였습니다.
+- 카드 정보는 `firebase realtime database`에 사용자별(`userId`)로 저장되며, 카드 작성 시 `ref(userId/cards/cardId)` 경로에 데이터를 저장합니다.
 
   ```jsx
   saveCard(userId, card) {
     firebaseDatabase.ref(`${userId}/cards/${card.id}`).set(card);
   }
   ```
-<br>
 
-- input의 value가 변경되면 `updateCard()` 함수로 value를 전달하여 실시간 데이터베이스에 반영하고 그 정보를 받아와 Preview 컴포넌트에서 실시간으로 볼 수 있게 구현하였습니다.
+- `input` 값이 변경될 때마다 `updateCard()` 함수가 호출되며, 변경된 내용을 바로 데이터베이스에 반영하고 해당 데이터를 `Preview` 컴포넌트에서 **실시간으로 확인**할 수 있도록 구현했습니다.
 
   ```jsx
   updateCard({
@@ -52,8 +48,5 @@
     [event.currentTarget.name]: event.currentTarget.value,
   });
   ```
-<br>
 
-- 등록된 카드의 정보는 **firebase**와 **cloudinary**에서 수정, 관리가 가능하도록 하였습니다.
-
-<br>
+- 저장된 카드 정보는 `firebase`를 통해 텍스트 등 일반 데이터가 관리되고, 이미지 업로드는 `cloudinary`를 사용해 처리하며, 두 서비스를 연동해 카드 내용을 자유롭게 수정하고 미리 볼 수 있도록 했습니다.
